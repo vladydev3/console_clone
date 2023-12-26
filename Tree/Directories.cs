@@ -25,14 +25,21 @@ public class Directory<T> : Tree<string>
 
     public Directory<T> FindNode(string name)
     {
-        for (int i = 0; i < Childrens.Length; i++)
+        if (Value.Equals(name))
         {
-            if (Childrens[i] == null) continue;
-            if (Childrens[i].Value == name)
+            return this;
+        }
+
+        foreach (var child in Childrens)
+        {
+            if (child == null) continue;
+            var result = child.FindNode(name);
+            if (result != null)
             {
-                return Childrens[i];
+                return result;
             }
         }
+
         return null;
     }
     public void Remove(string name)

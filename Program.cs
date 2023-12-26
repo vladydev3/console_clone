@@ -20,28 +20,50 @@ public class Program
 
             if (string.IsNullOrEmpty(input) && input.Equals("exit", StringComparison.CurrentCultureIgnoreCase)) break;
 
-            string[] tokens = input.Split(' ');
+            var lexer = new Lexer(input);
 
-            switch (tokens[0])
+            switch (lexer.Command)
             {
-                case "ls":
+                case CommandType.Ls:
                     directorioActual.PrintTree(directorioActual);
                     break;
-                case "mkdir":
-                    directorioActual.Attach(new Directory<string>(tokens[1]));
+                case CommandType.Mkdir:
+                    directorioActual.Attach(new Directory<string>(lexer.Folder1));
                     break;
-                case "rm":
-                    directorioActual.Remove(tokens[1]);
+                case CommandType.Rm:
+                    directorioActual.Remove(lexer.Folder1);
                     break;
-                case "cd":
-                    if (tokens[1] == "..")
+                case CommandType.Cd:
+                    if (lexer.Folder1 == "..")
                     {
                         directorioActual = root.FindParent(root, directorioActual);
                         break;
                     }
-                    var folder = directorioActual.FindNode(tokens[1]);
-                    if (folder == null) Console.WriteLine($"Folder {tokens[1]} not founded!");
+                    var folder = directorioActual.FindNode(lexer.Folder1);
+                    if (folder == null) Console.WriteLine($"Folder {lexer.Folder1} not founded!");
                     else directorioActual = folder;
+                    break;
+                case CommandType.Mv:
+                    var folder1 = root.FindNode(lexer.Folder1);
+                    var folder2 = root.FindNode(lexer.Folder2);
+                    if (folder1 == null || folder2 == null) Console.WriteLine($"Folder {lexer.Folder1} or {lexer.Folder2} not founded!");
+                    else
+                    {
+                        root.FindParent(root, folder1).Remove(folder1.Value);
+                        folder2.Attach(folder1);
+                    }
+                    break;
+                case CommandType.Cp:
+                    var folder3 = root.FindNode(lexer.Folder1);
+                    var folder4 = root.FindNode(lexer.Folder2);
+                    if (folder3 == null || folder4 == null) Console.WriteLine($"Folder {lexer.Folder1} or {lexer.Folder2} not founded!");
+                    else
+                    {
+                        folder4.Attach(folder3);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Command {token} not found!");
                     break;
             }
         }
