@@ -1,0 +1,45 @@
+# .NET Core and Visual Studio files
+.vscode/
+bin/
+obj/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# NuGet packages
+*.nuget.props
+*.nuget.targets
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUNIT
+*.VisualState.xml
+TestResult.xml
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# .NET Core project files
+*.dotnet-diagnostic.xml
+*.userprefs
+*.vscode-test/*
+
+# .NET Core CLI
+.nuget/
+dotnet.lock.json
+project.lock.json
+build/
+bin/
+obj/
