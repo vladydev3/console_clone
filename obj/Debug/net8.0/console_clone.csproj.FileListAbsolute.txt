@@ -12,3 +12,4 @@ D:\coding\console_clone\obj\Debug\net8.0\refint\console_clone.dll
 D:\coding\console_clone\obj\Debug\net8.0\console_clone.pdb
 D:\coding\console_clone\obj\Debug\net8.0\console_clone.genruntimeconfig.cache
 D:\coding\console_clone\obj\Debug\net8.0\ref\console_clone.dll
+D:\coding\console_clone\obj\Debug\net8.0\console_clone.sourcelink.json
