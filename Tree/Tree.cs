@@ -278,18 +278,6 @@ public class Tree<T>
         }
     }
 
-    // public Tree<T> LCA(Tree<T> treeA, Tree<T> treeB)
-    // {
-    //     var parentA = FindParent(this, treeA);
-    //     var parentB = FindParent(this, treeB);
-
-    //     if (parentA == null || parentB == null) return null;
-
-    //     if (parentA.Equals(parentB)) return parentA;
-
-
-    // }
-
     public void PrintTree(Tree<T> node, string indent = "")
     {
         if (node == null)
@@ -320,21 +308,5 @@ public class Tree<T>
                 PrintTree(child, indent);
             }
         }
-    }
-
-    public override bool Equals(object obj)
-    {
-        if (obj == null || GetType() != obj.GetType())
-        {
-            return false;
-        }
-
-        Tree<T> other = (Tree<T>)obj;
-        return EqualityComparer<T>.Default.Equals(Value, other.Value);
-    }
-
-    public override int GetHashCode()
-    {
-        return EqualityComparer<T>.Default.GetHashCode(Value);
     }
 }
